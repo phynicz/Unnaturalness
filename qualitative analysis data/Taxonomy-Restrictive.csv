@@ -1,0 +1,45 @@
+Label ,Details,Example
+STROP,String Operation,"Cipher.getInstance(String.valueOf(str2) + ""/"" + str + ""/NoPadding"")"
+TEROP,Ternary Operator,"Cipher.getInstance(m49809d ? ""AES/GCM/NoPadding"" : ""AES/CBC/PKCS5Padding"")"
+ENUM,Enum Type Constant,Cipher.getInstance(aVar.value)
+ID,Identifier,Cipher.getInstance(nativeGetString);
+THIS,Reference Current Object,Cipher.getInstance(this.mTransformation)
+METHOD,Method Call,"Cipher.getInstance(getTransformation(), ""BC"")"
+STATIC,Static Field Constant,"Cipher.getInstance(OmemoConstants.Crypto.CIPHERMODE, OmemoConstants.Crypto.PROVIDER)"
+NATIVE,Native Method Call,Cipher.getInstance(requestTransformation(1))
+BAS64,Base64-Decoder,"Cipher.getInstance(new String(Base64.decode(""REVTL0NCQy9QS0NTNVBhZGRpbmc="", 2)))"
+STRBUF,String Buffer,Cipher.getInstance(stringBuffer.toString())
+CONCT,Concatenation,Cipher.getInstance(TypeEncryp + Type + sPadding)
+SEPRT,Separator,Cipher.getInstance(str5 + Constants.sDelimiterUserSupervisor_TestingPerson + str2 + Constants.sDelimiterUserSupervisor_TestingPerson + str4)
+OID,Object Identifier,"Cipher.getInstance(""1.2.840.113549.3.2"")"
+STR,String Literal,"Cipher.getInstance(""AESWrap"")"
+EMTY,Empty,AESCipher.getInstance()
+"ID, METHOD",Identifier & Method Call,Cipher.getInstance(AesGcmUtils.decode(algorithmStr_encode))
+"STROP, BAS64",String Operation & Base64-Decoder,"Cipher.getInstance(new String(Base64.decode(""REVTL0NCQy9QS0NTNVBhZGRpbmc="", 2)))"
+"STROP, STRBUF",String Operation & String Buffer,Cipher.getInstance(sb.toString())
+"TEROP, THIS, METH ","Ternary Operator, Reference Current Object & Method Call",Cipher.getInstance(this.mTransformation == null ? key.getAlgorithm() : this.mTransformation)
+"ID, CONCT",Identifier & Concatenation (with/without string use),"Cipher.getInstance(""AES/"" + str + ""/NoPadding"")"
+"ENUM, METHOD",Enum Type Constant & Method Call,"Cipher.getInstance(aESCipherType.getValue(), SECURITY_PROVIDER)"
+"STROP, STATIC",String Operation & Static Field Constant,"Cipher.getInstance(String.format(""%s/%s/%s"", SecurityConstants.TYPE_RSA, SecurityConstants.BLOCKING_MODE, SecurityConstants.PADDING_TYPE))"
+"THIS, METHOD",Reference Current Object & Method Call,Cipher.getInstance(this.mBuilder.getAlgorithm())
+"METHOD , STATIC",Method Call & Static Field Constant,"Cipher.getInstance(ContentCryptoScheme.AES_GCM.getCipherAlgorithm(), provider)"
+"METHOD, OID",Method Call & Object Identifier,"Cipher.getInstance(algorithm.getId(), provider)"
+"ID(3), CONCT",Identifier(3) & Concatenation,Cipher.getInstance(TypeEncryp + Type + sPadding)
+"STROP(2), ID(2)",String Operation(2) & Identifier (2),"Cipher.getInstance(String.format(""%1$s/%2$s/%3$s"", aVar, bVar.toString(), cVar))"
+"ID(2), CONCT, SEPRT","Identifier(2), Concatenation & Forward Slash","Cipher.getInstance(""AES/"" + str + ""/"" + str2)"
+"STROP, ID, THIS(2)","String Operation, Identifier & Reference Current Object (2)","Cipher.getInstance(String.format(""%s/%s/%s"", algorithm, this.strMode, this.strPadding))"
+"CONCT, SEPRT",Concatenation & Forward-Slash (2),"Cipher.getInstance(""AES"" + File.separator + ""CBC"" + File.separator + ""PKCS7Padding"")"
+"THIS, CONCAT, SEPRT","Reference Current Object, Concatenation & Forward Slash",Cipher.getInstance(this.ENCRYPTION_ALGORITHM + '/' + this.ENCRYPTION_BLOCK_MODE + '/' + this.ENCRYPTION_PADDING)
+"STROP, THIS(2)",String Operation & Reference Current Object (2),"Cipher.getInstance(String.format(""%s/%s/%s"", ""AES"", this.f5687d, this.f5688e))"
+"STATIC, CONCT, SEPRT","Static Field Constant (3), Concatenation & Forward Slash","Cipher.getInstance(cipherAlgorithm.jceId + ""/"" + chainingMode.jceId + ""/"" + str, ""BC"")"
+"METHOD(2), OID","Method Chaining, Object Identifier",Cipher.getInstance(algorithm.getAlgorithm().getId())
+"METHOD(2), CONCT, SEPRT","Method Call (3),  Concatenation, & Forward Slash",Cipher.getInstance(getEncryptionAlgorithm() + '/' + getEncryptionBlockMode() + '/' + getEncryptionPadding())
+"STROP, ID(2), SEPRT","Concatenation, String Operation, Identifier (2), Forward Slash","Cipher.getInstance(String.valueOf(str2) + ""/"" + str + ""/NoPadding"")"
+"ID(3), CONCT, SEPRT","Identifier (3), Concatenation, Separator","Cipher.getInstance(str + ""/"" + str2 + ""/"" + str3)"
+"STROP, ENUM, ID","String Operation (2), Enum Type Constant & Identifier","Cipher.getInstance(String.format(""%1$s/%2$s/%3$s"", a.AES, bVar.toString(), cVar))"
+"ENUM(2), METHOD(2), CONCT, SEPRT","Enum Type Constant (2), Method Call (2),  Concatenation, Forward Slash","Cipher.getInstance(""AES/"" + mode.getId() + JsonPointer.SEPARATOR + padding.getId())"
+"THIS(3), CONT, SEPRT","Reference Current Object (3), Concatenation, Forward Slash",Cipher.getInstance(this.ENCRYPTION_ALGORITHM + JsonPointer.SEPARATOR + this.ENCRYPTION_BLOCK_MODE + JsonPointer.SEPARATOR + this.ENCRYPTION_PADDING)
+"STROP, THIS, METHOD, BAS64","String Operation (2), Reference Current Object, Method Call, Base64-Decoder","Cipher.getInstance(new String(this.f3747o.doFinal(Base64.decode(""mjfvvELbNN2QKEwIHMJv7Slabhps9jYS"", 2))).substring(2))"
+"TEROP(2), METHOD(2)",Ternary (2). Method Call (2),"Cipher.getInstance(Intrinsics.areEqual(this.sharedPreferences.getString(""cipher.used"", Build.VERSION.SDK_INT >= 23 ? ""M"" : ""PREM""), ""M"") ? ""RSA/ECB/OAEPWithSHA-1AndMGF1Padding"" : ""RSA/ECB/PKCS1Padding"")"
+"STROP(3), CONT","String Operation (3), Concatenation","Cipher.getInstance(""AES/"" + ((char) (""AES/GCM/NoPadding"".charAt(4) - 2)) + ""AES/GCM/NoPadding"".charAt(5) + ((char) (""AES/GCM/NoPadding"".charAt(6) - 11)) + ""/NoPadding"")"
+"STROP(2), ENUM(3)","String Operation (2), Enum Type Constant (3)","Cipher.getInstance(String.format(""%1$s/%2$s/%3$s"", a.DES, bVar.toString(), c.NoPadding))"

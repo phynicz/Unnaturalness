@@ -1,0 +1,427 @@
+Label,Details ,Examples
+ABS,Abstract Method,"@Override // javax.net.ssl.X509ExtendedTrustManager
+  public abstract void checkServerTrusted(X509Certificate[] x509CertificateArr, String str, Socket socket) throws CertificateException;"
+NATIVD,Native Method Declaration,"private native void n_checkServerTrusted(X509Certificate[] x509CertificateArr, String str);"
+ILL,Throwing Illegal Argument Exception,"@Override // javax.net.ssl.X509ExtendedTrustManager
+  public final void checkServerTrusted(X509Certificate[] x509CertificateArr, String str, Socket socket) {
+  throw null;
+  }"
+CEXP,Throwing Certificate Exception,"@Override // javax.net.ssl.X509TrustManager
+  public final void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) {
+  throw new CertificateException();
+  }"
+NEXP,Throwing Null & Assertion Exception,"@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) {
+  throw new AssertionError();
+  }"
+LOG,Logging Certificates,"@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) {
+  logCertificate(x509CertificateArr, SERVER);
+  }"
+NATIVE,Native Method Call,"@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) {
+  n_checkServerTrusted(x509CertificateArr, str);
+  }"
+METHOD,Method Call,"@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+  for (X509Certificate certificate : chain) {
+  if (isValidPin(certificate)) {
+  return;}"
+THIS,Reference Variable,"@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) {
+  for (X509Certificate x509Certificate : x509CertificateArr) {
+  this.f6042a.add(x509Certificate);
+  }
+  }"
+ISTRST,TrustStrategy Method,"@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) {
+  if (this.f44327b.isTrusted(x509CertificateArr, str)) {
+  return;
+  }
+  this.f44326a.checkServerTrusted(x509CertificateArr, str);
+  }"
+VAL,Certificate Validity Check,"@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) {
+  Log.d(""APIGatewayImpl"", ""checkServerTrusted:"" + x509CertificateArr);
+  for (X509Certificate x509Certificate : x509CertificateArr) {
+  x509Certificate.checkValidity();
+  }
+  }"
+LEN,Certificate length Check,"@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) throws CertificateException {
+  if (x509CertificateArr.length != 1) {
+  throw new CertificateException(""Certificate could not be validated (not self-signed)"");
+  }"
+NULL,Non-Null Value Check,"@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] ax509certificate, String authType) throws CertificateException {
+  if (ax509certificate != null) {
+  for (X509Certificate x509Certificate : ax509certificate) {
+  this.issuersList.add(x509Certificate);
+  }"
+LIST,List Interface Method i.e. add,"@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] ax509certificate, String authType) throws CertificateException {
+  if (ax509certificate != null) {
+  for (X509Certificate x509Certificate : ax509certificate) {
+  this.issuersList.add(x509Certificate);
+  }"
+CERFAC,Certificate Factory ,"Certificate generateCertificate = CertificateFactory.getInstance(""X.509"").generateCertificate(this.inputStream);"
+VER,Verify Method,x509Certificate.verify(this.f21137a.getPublicKey());
+STROP,String Operation,"if (x509Certificate.getSubjectDN().getName().contains(""ProRAE Guardian Root Certificate Authority"")) {"
+AUTH,AuthType Value Check,"if (str == null || !""ECDHE_RSA"".equalsIgnoreCase(str)) {
+ throw new CertificateException(""checkServerTrusted: AuthType is not RSA"");}"
+ENCOD,Certificate.getEncoded,"X509Certificate x509Certificate2 = x509CertificateArr[0];
+this.lastCheckedCert = x509Certificate2;
+if (this.expectedCert != null) {
+ byte[] encoded = x509Certificate2.getEncoded();
+ byte[] encoded2 = this.expectedCert.getEncoded();"
+ARR,Array Method,"if (!Arrays.equals(encoded, encoded2)) {"
+BIGINT,bigInteger,"if (!bigInteger.equals(new BigInteger(1, x509Certificate2.getPublicKey().getEncoded()).toString(16)))"
+TMFAC,TrustManagerFactory,"TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(""X509"");
+  trustManagerFactory.init((KeyStore) null);
+  for (TrustManager trustManager : trustManagerFactory.getTrustManagers()) {
+  ((X509TrustManager) trustManager).checkServerTrusted(x509CertificateArr, str);"
+GETPUB,Certificate.getPublicKey,"for (X509Certificate x509Certificate : chain) {
+ PublicKey publicKey = x509Certificate.getPublicKey();
+ String encodeToString = Base64.encodeToString(publicKey.getEncoded(), 2);"
+GETISR,Certificate.getIssuerDN (Denigrated),String name2 = x509Certificate.getIssuerDN().getName();
+GETSUB,Certificate.getSubjectDN (Denigrated),String name = x509Certificate.getSubjectDN().getName();
+HASH,Hash Algorithm,"MessageDigest messageDigest = MessageDigest.getInstance(""SHA1"");
+String[] strArr = new String[x509CertificateArr.length];
+for (int i = 0; i < x509CertificateArr.length; i++) {
+ strArr[i] = new BigInteger(1, messageDigest.digest(x509CertificateArr[i].getEncoded())).toString(16);"
+CERPAT,CertPathValidator,"CertPathValidator certPathValidator = CertPathValidator.getInstance(""PKIX"");
+certPathValidator.validate(generateCertPath, pKIXParameters);"
+PKIX,PKIXParameters,"PKIXParameters pKIXParameters = new PKIXParameters(this.f1300b);
+pKIXParameters.setRevocationEnabled(false);"
+CLIENT,Calling an Empty CheckClientTrusted Method,"@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) throws CertificateException {
+  try {
+  checkClientTrusted(x509CertificateArr, str);"
+EMPTY,Empty Method,"@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+  }"
+"CEXP, LEN",Throwing Certificate Exception & Certificate length Check,"@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) throws CertificateException {
+  if (x509CertificateArr.length != 1) {
+  throw new CertificateException(""""Certificate could not be validated (not self-signed)"""");
+  }
+  }"
+"VAL, LEN, NULL","Certificate Validity Check, Certificate length Check & Non-Null Value Check","""@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) {
+  if (x509CertificateArr == null || x509CertificateArr.length != 1) {
+  return;
+  }
+  x509CertificateArr[0].checkValidity();
+  }"""
+"LOG, VAL",Logging Certificates & Certificate Validity Check,"@Override // javax.net.ssl.X509TrustManager
+public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) {
+ Log.d(""""""""APIGatewayImpl"""""""", """"""""checkServerTrusted:"""""""" + x509CertificateArr);
+ for (X509Certificate x509Certificate : x509CertificateArr) {
+ x509Certificate.checkValidity();
+ }
+}"
+"CEXP, CLIENT",Throwing Certificate Exception & Calling an Empty CheckClientTrusted Method,"@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) throws CertificateException {
+  try {
+  checkClientTrusted(x509CertificateArr, str);
+  } catch (Exception e10) {
+  throw new CertificateException(""""Certificate not trusted. It has expired"""", e10);
+  }
+  }"
+"VER, CEXP",Throwing Certificate Exception & Verify Method,"""@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+  for (X509Certificate x509Certificate : chain) {
+  try {
+  x509Certificate.verify(localCertificate.getPublicKey());
+  } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchProviderException | SignatureException unused) {
+  throw new CertificateException(""""Received invalid certificate!"""");
+  }
+  }
+  }"""
+"THIS, ISTRST",Reference Variable & TrustStrategy Method,"""@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) throws CertificateException {
+  if (this.trustStrategy.isTrusted(x509CertificateArr, str)) {
+  return;
+  }
+  this.trustManager.checkServerTrusted(x509CertificateArr, str);
+  }"""
+"ILL(2), CEXP(2), VAL, LEN, AUTH, ","Throwing Illegal Argument Exception (2), Throwing Certificate Exception (2), Certificate Validity Check, Certificate length Check & AuthType Value Check","@Override // javax.net.ssl.X509TrustManager
+  public final void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) {
+  if (x509CertificateArr != null && x509CertificateArr.length != 0) {
+  if (str != null && str.length() != 0) {
+  try {
+  x509CertificateArr[0].checkValidity();
+  return;
+  } catch (Exception unused) {
+  throw new CertificateException(""""Certificate not valid or trusted."""");
+  }
+  }
+  throw new IllegalArgumentException(""""parameter is not used"""");
+  }
+  throw new IllegalArgumentException(""""parameter is not used"""");
+  }"
+"NULL,LIST",Non-Null Value Check & List Interface Method,"""@Override // javax.net.ssl.X509TrustManager
+    public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) throws CertificateException {
+        if (x509CertificateArr != null) {
+            for (X509Certificate x509Certificate : x509CertificateArr) {
+                this.issuersList.add(x509Certificate);
+            }
+        }
+    }"""
+"THIS, VAL, LEN, NULL","Reference Variable, Certificate Validity Check,Certificate length Check, Non-Null Value Check","""@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) throws CertificateException {
+  if (x509CertificateArr != null && x509CertificateArr.length == 1) {
+  x509CertificateArr[0].checkValidity();
+  } else {
+  this.standardTrustManager.checkServerTrusted(x509CertificateArr, str);
+  }
+  }"""
+"METHOD(2), THIS(2), LIST","Method Call(2), Reference Variable(2), List Interface Method(2)","""@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) throws CertificateException {
+  if (this.cache.contains(x509CertificateArr[0])) {
+  return;
+  }
+  checkSystemTrust(x509CertificateArr, str);
+  checkPinTrust(x509CertificateArr);
+  this.cache.add(x509CertificateArr[0]);
+  }"""
+"CEXP, THIS, VAL, NULL,CERFAC, VER","Throwing Certificate Exception, Reference Variable, Certificate Validity Check, Non-Null Value Check, Certificate Factory, Verify Method","""""""@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) throws CertificateException {
+  if (this.inputStream != null) {
+  Certificate generateCertificate = CertificateFactory.getInstance(""""""""X.509"""""""").generateCertificate(this.inputStream);
+  for (X509Certificate x509Certificate : x509CertificateArr) {
+  x509Certificate.checkValidity();
+  try {
+  generateCertificate.verify(x509Certificate.getPublicKey());
+  } catch (InvalidKeyException e10) {
+  e10.printStackTrace();
+  } catch (NoSuchAlgorithmException e11) {
+  e11.printStackTrace();
+  } catch (NoSuchProviderException e12) {
+  e12.printStackTrace();
+  } catch (SignatureException e13) {
+  e13.printStackTrace();
+  }
+  }
+  return;
+  }
+  throw new CertificateException(""""""""ËØÅ‰π¶ÈîôËØØ"""""""");
+  }"""""""
+"VAL, VER","Certificate Validity Check, Verify Method","""""""@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) throws CertificateException {
+  for (X509Certificate x509Certificate : x509CertificateArr) {
+  x509Certificate.checkValidity();
+  try {
+  x509Certificate.verify(this.f21137a.getPublicKey());
+  } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchProviderException | SignatureException e2) {
+  e2.printStackTrace();
+  }
+  }
+  }"""""""
+"ILL(2),CEXP(2),VAL,,LEN, NULL, STROP, AUTH","Throwing Illegal Argument Exception (2), Throwing Certificate Exception (2), Certificate Validity Check, Certificate length Check, String Operation & AuthType Value Check","""@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) throws CertificateException {
+  if (x509CertificateArr == null) {
+  throw new IllegalArgumentException(""""""""checkServerTrusted: X509Certificate array is null"""""""");
+  }
+  if (x509CertificateArr.length <= 0) {
+  throw new IllegalArgumentException(""""""""checkServerTrusted: X509Certificate is empty"""""""");
+  }
+  if (str == null || !str.equalsIgnoreCase(""""""""RSA"""""""")) {
+  throw new CertificateException(""""""""checkServerTrusted: AuthType is not RSA"""""""");
+  }
+  try {
+  x509CertificateArr[0].checkValidity();
+  } catch (Exception unused) {
+  throw new CertificateException(""""""""Server certificate not valid or trusted."""""""");
+  }
+  }"""
+"CEXP(3), LEN, NULL, STROP, GETISR, AUTH","Throwing Certificate Exception(3), Certificate length Check, Non-Null Value Check, String Operation, AuthType Value Check, Certificate.getIssuerDN (Deprecated)","""@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) throws CertificateException {
+  if (x509CertificateArr == null || x509CertificateArr.length == 0) {
+  throw new CertificateException(""""null or zero-length certificate chain"""");
+  }
+  if (str == null || str.length() == 0) {
+  throw new CertificateException(""""null or zero-length authentication type"""");
+  }
+  if (!x509CertificateArr[0].getIssuerDN().getName().equals(""""CN=ciscobusiness.cisco,OU=DeviceSSL (WebAdmin),O=Cisco Systems Inc.,C=US"""")) {
+  throw new CertificateException(""""Not an valid server side certificate"""");
+  }
+  }"""
+"NULL(2), LIST","Non-Null Value Check, List Interface Method","""@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] certs, String authType) {
+  for (X509Certificate cert : certs) {
+  if (cert != null && cert.getCriticalExtensionOIDs() != null) {
+  cert.getCriticalExtensionOIDs().remove(""""""""2.5.29.15"""""""");
+  }
+  }
+  }"""
+"CEXP(2), LOG, THIS, NULL(2), ENCOD(2), ARR","Throwing Certificate Exception(2), Logging Certificates, Reference Variable, Non-Null Value Check(2), Certificate.getEncoded (2), Array Method","@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) {
+  String str2 = Util.f1167T;
+  StringBuilder sb = new StringBuilder();
+  sb.append(""""Expecting device cert """");
+  X509Certificate x509Certificate = this.expectedCert;
+  sb.append(x509Certificate != null ? x509Certificate.getSubjectDN() : """"(any)"""");
+  Log.d(str2, sb.toString());
+  if (x509CertificateArr != null && x509CertificateArr.length > 0) {
+  X509Certificate x509Certificate2 = x509CertificateArr[0];
+  this.lastCheckedCert = x509Certificate2;
+  if (this.expectedCert != null) {
+  byte[] encoded = x509Certificate2.getEncoded();
+  byte[] encoded2 = this.expectedCert.getEncoded();
+  Log.d(Util.f1167T, """"Device presented cert """" + x509Certificate2.getSubjectDN());
+  if (!Arrays.equals(encoded, encoded2)) {
+  throw new CertificateException(""""certificate does not match"""");
+  }
+  return;
+  }
+  return;
+  }
+  this.lastCheckedCert = null;
+  throw new CertificateException(""""no server certificate"""");
+  }"
+"LEN, NULL, STROP, GETSUB","Certificate length Check, Non-Null Value Check, String Operation, Certificate.getSubjectDN (Deprecated)","""@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) throws CertificateException {
+  boolean z = false;
+  int i = 0;
+  while (true) {
+  if (i >= x509CertificateArr.length) {
+  z = true;
+  break;
+  }
+  X509Certificate x509Certificate = x509CertificateArr[i];
+  if (x509Certificate.getSubjectDN() != null && x509Certificate.getSubjectDN().getName() != null) {
+  String name = x509Certificate.getSubjectDN().getName();
+  if (name.contains("""".m2mservices.com"""") || name.contains("""".m2mbackup.com"""")) {
+  break;
+  }
+  }
+  i++;
+  }
+  if (z) {
+  x509TrustManager.checkServerTrusted(x509CertificateArr, str);
+  }
+  }"""
+"STROP, GETSUB","String Operation, Certificate.getSubjectDN (Deprecated)","""@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] certs, String authType) {
+  int i = 0;
+  for (X509Certificate x509Certificate : certs) {
+  if (x509Certificate.getSubjectDN().toString().contains(""""EMAILADDRESS=sales-usa@extron.com, CN=Quantum Ultra, OU=Engineering, O=ExtronElectronics, L=Anaheim, ST=CA, C=US"""")) {
+  i++;
+  }
+  }
+  if (i == 0) {
+  throw new SecurityException(""""ERMERGERD ITS NOT TRUSTED!"""");
+  }
+  }"""
+"CEXP(5), LOG(2), LEN, NULL(3), CERFAC, BIGINT, TMFAC, GETPUB, GETSUB, GETISR","Throwing Certificate Exception(5), Logging Certificates(2), Certificate length Check, Non-Null Value Check(3), Certificate Factory, bigInteger(2), TrustManagerFactory, Certificate.getPublicKey, Certificate.getIssuerDN(Deprecated), Certificate.getSubjectDN (Deprecated)","@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) throws CertificateException {
+  if (x509CertificateArr == null) {
+  throw new CertificateException(""checkServerTrusted: X509Certificate array is null"");
+  }
+  if (x509CertificateArr.length < 1) {
+  throw new CertificateException(""checkServerTrusted: X509Certificate is empty"");
+  }
+  if (str == null || !str.equals(""ECDHE_RSA"")) {
+  throw new CertificateException(""checkServerTrusted: AuthType is not ECDHE_RSA"");
+  }
+  Log.d(""HttpBase"", ""checkServerTrusted ÁΩëÁªú‰∏≠ÁöÑËØÅ‰π¶‰ø°ÊÅØ"");
+  try {
+  TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(""X509"");
+  trustManagerFactory.init((KeyStore) null);
+  for (TrustManager trustManager : trustManagerFactory.getTrustManagers()) {
+  ((X509TrustManager) trustManager).checkServerTrusted(x509CertificateArr, str);
+  }
+  } catch (KeyStoreException e) {
+  e.printStackTrace();
+  } catch (NoSuchAlgorithmException e2) {
+  e2.printStackTrace();
+  }
+  if (this.ca_inputstream == null) {
+  return;
+  }
+  Log.d(""HttpBase"", ""checkServerTrusted Ê£ÄÊü•Êú¨Âú∞ËØÅ‰π¶ÂíåÁΩëÁªú‰∏≠ÁöÑËØÅ‰π¶‰ø°ÊÅØ"");
+  X509Certificate x509Certificate = (X509Certificate) CertificateFactory.getInstance(""X.509"").generateCertificate(this.ca_inputstream);
+  String bigInteger = new BigInteger(1, x509Certificate.getPublicKey().getEncoded()).toString(16);
+  String name = x509Certificate.getSubjectDN().getName();
+  String name2 = x509Certificate.getIssuerDN().getName();
+  X509Certificate x509Certificate2 = x509CertificateArr[0];
+  if (!bigInteger.equals(new BigInteger(1, x509Certificate2.getPublicKey().getEncoded()).toString(16))) {
+  throw new CertificateException(""server's PublicKey is not equals to client's PublicKey"");
+  }
+  if (!name.equals(x509Certificate2.getSubjectDN().getName())) {
+  throw new CertificateException(""server's subject is not equals to client's subject"");
+  }
+  if (!name2.equals(x509Certificate2.getIssuerDN().getName())) {
+  throw new CertificateException(""server's issuser is not equals to client's issuser"");
+  }
+  }"
+"ILL(2), CEXP(2), VAL, NULL, LEN, VER, STROP, AUTH, GETSUB","Throwing Illegal Argument Exception (2), Throwing Certificate Exception (2), Certificate Validity Check, Certificate length Check, Non-Null Value Check, Verify Method, String Operation, AuthType Value Check, Certificate.getSubjectDN (Deprecated)","""@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) {
+  if (x509CertificateArr != null) {
+  if (x509CertificateArr.length > 0) {
+  if (str != null && str.contains(""""ECDSA"""")) {
+  CertificateFactory certificateFactory = CertificateFactory.getInstance(""""X.509"""");
+  InputStream openRawResource = MCSApplication.m5929a().getResources().openRawResource(R.raw.ca_cert);
+  try {
+  for (X509Certificate x509Certificate : x509CertificateArr) {
+  x509Certificate.checkValidity();
+  if (x509Certificate.getSubjectDN().getName().contains(""""ProRAE Guardian Root Certificate Authority"""")) {
+  try {
+  x509Certificate.verify(certificateFactory.generateCertificate(openRawResource).getPublicKey());
+  return;
+  } catch (Exception unused) {
+  throw new CertificateException(""""checkServerTrusted: cert is invalidate."""");
+  }
+  }
+  }
+  throw new CertificateException(""""no trust certs"""");
+  } finally {
+  C3498m.m16301a(openRawResource);
+  }
+  }
+  throw new CertificateException(""""checkServerTrusted: AuthType is not ECDSA"""");
+  }
+  throw new IllegalArgumentException(""""checkServerTrusted: X509Certificate is empty"""");
+  }
+  throw new IllegalArgumentException(""""checkServerTrusted: X509Certificate array is null"""");
+  }"""
+"LOG(4), THIS, CERFAC, CERPAT, PKIX","Logging Certificates(4), Reference Variable, Certificate Factory,  CertPathValidator, PKIXParameters","""@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) {
+  try {
+  this.f1299a.checkServerTrusted(x509CertificateArr, str);
+  } catch (CertificateException e) {
+  try {
+  X509Certificate[] m1142a = m1142a(x509CertificateArr);
+  CertPathValidator certPathValidator = CertPathValidator.getInstance(""""PKIX"""");
+  CertPath generateCertPath = CertificateFactory.getInstance(""""X509"""").generateCertPath(Arrays.asList(m1142a));
+  PKIXParameters pKIXParameters = new PKIXParameters(this.f1300b);
+  pKIXParameters.setRevocationEnabled(false);
+  certPathValidator.validate(generateCertPath, pKIXParameters);
+  } catch (CertificateNotYetValidException e2) {
+  ALog.m1207d(""""MqttTrustManager"""", """"CertificateNotYetValidException """" + e2);
+  } catch (Exception e3) {
+  if (e3.getCause() instanceof CertificateNotYetValidException) {
+  ALog.m1207d(""""MqttTrustManager"""", """"validate cert failed.because system is early than cert valid . wsf will ignore this exception,"""" + e3);
+  return;
+  }
+  ALog.m1207d(""""MqttTrustManager"""", """"checkServerTrusted faied."""" + e);
+  ALog.m1207d(""""MqttTrustManager"""", """"validate cert failed."""" + e3);
+  throw e;
+  }
+  }
+  }"""
+"CEXP, LOG(3), STROP, ENCOD, HASH","Throwing Certificate Exception, Loggging Certificate(3), String Operation, Certificate.getEncoded, Hash Algorithm","@Override // javax.net.ssl.X509TrustManager
+  public void checkServerTrusted(X509Certificate[] x509CertificateArr, String str2) throws CertificateException {
+  Log.d(""TestApp"", ""checkServerTrusted "");
+  try {
+  if (AdjustBridgeUtil.byte2HexFormatted(MessageDigest.getInstance(""SHA1"").digest(x509CertificateArr[0].getEncoded())).equalsIgnoreCase(""7BCFF44099A35BC093BB48C5A6B9A516CDFDA0D1"")) {
+  return;
+  }
+  throw new CertificateException();
+  } catch (NoSuchAlgorithmException e) {
+  Log.e(""TestApp"", ""testingMode error "" + e.getMessage());
+  } catch (CertificateEncodingException e2) {
+  Log.e(""TestApp"", ""testingMode error "" + e2.getMessage());
+  }
+  }"
