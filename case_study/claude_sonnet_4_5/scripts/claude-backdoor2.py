@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 
 
 client = anthropic.Anthropic(
-    api_key="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"
+    api_key=""
 )
 
 # Rate limiting configuration
