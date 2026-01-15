@@ -1,4 +1,4 @@
-## The numbers: 14/34 and 13/30 from QWQ32B and Sonnet 4.5, respectively, are syntactically similar, but semantically different from the decode-decrypt backdoor, i.e., they use similar building blocks but in different ways. From these invocations, from both models combined, we confirmed 4 novel backdoors unseen in our qualitative analysis, while the rest were minor variants of these 4.
+#### The numbers: 14/34 and 13/30 from QWQ32B and Sonnet 4.5, respectively, are syntactically similar, but semantically different from the decode-decrypt backdoor, i.e., they use similar building blocks but in different ways. From these invocations, from both models combined, we confirmed 4 novel backdoors unseen in our qualitative analysis, while the rest were minor variants of these 4.
 
 # 1
 ## Novel Backdoor Found by LLMs
