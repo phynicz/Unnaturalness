@@ -26,7 +26,7 @@ public static String m4262a(byte[] bArr) {
 }
 
 private static byte[] m4174b(byte[] bArr, byte[] bArr2) {
-    Custom.Base64(str)
+    Custom.Base64.decoder(str)
 }
 ```
 
