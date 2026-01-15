@@ -23,7 +23,7 @@ This directory includes the following:
 
 This directory includes the following:
 
-+ Taxonomies of both restrictive and flexible invocation and code snippers.
++ Taxonomies of both restrictive and flexible invocation and code snippets.
 + Includes all invocations of `Cipher.getInstance` invocation before sampling.
 + Includes all invocations of `checkServerTrusted` invocation before sampling.
 + Includes sampled invocation for `Cipher.getInstance`, `checkServerTrusted`, `hostnameVerifier`, `SecretKeySpec`.
